@@ -15,7 +15,7 @@ add_subdirectory("${PROJECT_SOURCE_DIR}/libs/catch2")
 
 add_library(Main STATIC 
     "${PROJECT_SOURCE_DIR}/src/main/entry.cpp"
-    "${PROJECT_SOURCE_DIR}/src/main/grid.cpp"
+    "${PROJECT_SOURCE_DIR}/src/main/block.cpp"
     )
 
 target_include_directories(Main PUBLIC 
@@ -25,6 +25,7 @@ target_include_directories(Main PUBLIC
 add_executable(MainTests 
     "${PROJECT_SOURCE_DIR}/src/tests/entry.cpp" 
     "${PROJECT_SOURCE_DIR}/src/tests/grid.cpp"
+    "${PROJECT_SOURCE_DIR}/src/tests/block.cpp"
     ) 
 
 target_include_directories(MainTests PUBLIC 

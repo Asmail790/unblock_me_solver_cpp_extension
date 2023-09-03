@@ -1,24 +1,25 @@
 
 #include <set>
-#include "grid.hpp"
+#include "block.hpp"
 
-namespace UnblockMe::Utils::Grid {
-
+namespace UnblockMe::Utils::Block {
+    // use std::move for xHeadPos.value ?
+     
     Block::Block(
         Direction direction,
         BlockType type,
-        unsigned char xHeadPos,
-        unsigned char yHeadPos,
-        unsigned char size
+        X xHeadPos,
+        Y yHeadPos,
+        Size size
      ) : 
      direction{direction},
      type{type},
-     xHeadPos{xHeadPos},
-     yHeadPos{yHeadPos},
-     size{size} {
+     xHeadPos{xHeadPos.value},
+     yHeadPos{yHeadPos.value},
+     size{size.value} {
 
     }
-    auto Block::operator==(const Block& otherBlock)->bool const {
+    auto Block::operator==(const Block& otherBlock) const ->bool  {
         if (this->direction != otherBlock.direction) {
             return false;
         }
@@ -41,16 +42,14 @@ namespace UnblockMe::Utils::Grid {
         return true;
     }
 
-    auto BlockHash::operator()(const Block& block)->std::size_t const{
+
+    std::size_t hashOfBlock(const Block &block) {
         using std::size_t;
 
         size_t hash = block.xHeadPos*10000 +block.yHeadPos*1000 +block.size*100 + static_cast<int>(block.type)*10 + static_cast<int>(block.direction); 
         return hash;
-    };
-
-    constexpr auto BlockEquals::operator()(const Block& lhs, const Block& rhs)->bool const{
-        return lhs.size== rhs.size;
-    };
-
-    
+    }
+    bool equalsOfBlock(const Block& lhs, const Block& rhs){
+          return lhs == rhs;
+    }
 }
