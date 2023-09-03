@@ -14,6 +14,6 @@ namespace UnblockMe::Utils::Grid {
 
     // implement std::equal_to and std::hash  for block to skip decltype(&hashOfBlock)?
     using Grid = std::unordered_set<Block,decltype(&hashOfBlock)>;
-    
+    using ExperimentalGrid = std::unordered_set<const Block*,decltype(&hashOfBlock)>;
 }
 #endif
