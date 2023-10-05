@@ -290,7 +290,7 @@ namespace UnblockMe::Utils::Entry {
             setBlockImageProperties(boundingBoxes,mlClassIds.value());
         }
     
-    auto SimpleGuider::setMLClassIds(MLClassIds& ids)->void{
+    auto SimpleGuider::setMLClassIds(const MLClassIds& ids)->void{
             mlClassIds= ids;
     }
 
