@@ -30,7 +30,7 @@ add_library(Main STATIC
 )
     
 target_include_directories(Main PUBLIC 
-    "${PROJECT_SOURCE_DIR}/src/include/"
+    "${PROJECT_SOURCE_DIR}/src/includes/"
 )
     
 add_executable(MainTests 
