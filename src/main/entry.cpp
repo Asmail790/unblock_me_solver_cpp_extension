@@ -275,7 +275,7 @@ namespace UnblockMe::Utils::Entry {
                 };
             }
 
-    auto SimpleGuider::setBlockImageProperties(std::vector<BoundingBox> blockBoundingBoxes, MLClassIds mlClassIds_)->void{
+    auto SimpleGuider::setBlockImageProperties(const std::vector<BoundingBox> blockBoundingBoxes, MLClassIds mlClassIds_)->void{
 
                 BlockImageProperies properties{};
                 for(auto& box: blockBoundingBoxes){

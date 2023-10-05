@@ -183,11 +183,11 @@ namespace UnblockMe::Utils::Entry {
             std::optional<BlockImageProperies> blockImageProperties =  std::nullopt;
             
             auto setGridProperties(const BoundingBox& grid)->void;
-            auto setBlockImageProperties(std::vector<BoundingBox> blockBoundingBoxes, MLClassIds mlClassIds_)->void;
+            auto setBlockImageProperties(const std::vector<BoundingBox> blockBoundingBoxes, MLClassIds mlClassIds_)->void;
             auto setUpGobals(const std::vector<BoundingBox>& boundingBoxes, const BoundingBox& gridBoudingBox)->void;
         
         public:
-            auto setMLClassIds(MLClassIds& ids)->void;
+            auto setMLClassIds(const MLClassIds& ids)->void;
             
             std::vector<NextStep> inferAllSteps(const std::vector<BoundingBox>& boundingBoxes, const BoundingBox& gridBoudingBox) override;
             NextStep inferOneStep(const std::vector<BoundingBox>& boundingBoxes, const BoundingBox& gridBoudingBox) override;

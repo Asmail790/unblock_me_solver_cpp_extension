@@ -42,7 +42,7 @@ add_executable(MainTests
 ) 
 
 target_include_directories(MainTests PUBLIC 
-    "${PROJECT_SOURCE_DIR}/src/include/"
+    "${PROJECT_SOURCE_DIR}/src/includes/"
 )
 
 
