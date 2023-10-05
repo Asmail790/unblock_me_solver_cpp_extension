@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.26)
 
 project(
     UnblockMeSolverCppExtension 
@@ -10,16 +10,17 @@ project(
 set(CMAKE_CXX_STANDARD 17) # or 11 ?
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-#if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
-#    add_compile_options(-O0)
-#    message(STATUS "GNU is used")
-#endif()
+Include(FetchContent)
 
-add_compile_options(-O3)
-enable_testing()
-add_subdirectory(
-    "${PROJECT_SOURCE_DIR}/libs/catch2"
+FetchContent_Declare(
+  Catch2
+  GIT_REPOSITORY https://github.com/catchorg/Catch2.git
+  GIT_TAG        v3.4.0 
 )
+
+FetchContent_MakeAvailable(Catch2)
+
+enable_testing()
 
 add_library(Main STATIC 
     "${PROJECT_SOURCE_DIR}/src/main/entry.cpp"
@@ -43,6 +44,11 @@ add_executable(MainTests
 target_include_directories(MainTests PUBLIC 
     "${PROJECT_SOURCE_DIR}/src/include/"
 )
+
+
+
+
+
 
 target_link_libraries(MainTests PRIVATE Catch2::Catch2WithMain)
 target_link_libraries(MainTests PUBLIC Main)
