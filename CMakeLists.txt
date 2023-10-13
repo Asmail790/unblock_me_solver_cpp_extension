@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 3.26)
 project(
     UnblockMeSolverCppExtension 
     VERSION 1.0
-    DESCRIPTION "Very nice project"
+    DESCRIPTION "Extension for UnblockMeSolver in cpp"
     LANGUAGES CXX
     )
     
