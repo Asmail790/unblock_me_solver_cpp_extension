@@ -122,7 +122,6 @@ TEST_CASE("convertToNextStep","[convertToNextStep]"){
     using UnblockMe::Utils::Block::BlockType;
     using UnblockMe::Utils::Block::X;
     using UnblockMe::Utils::Block::Y;
-    using UnblockMe::Utils::Block::Size;
 
     GridProperties properties {
         Top{0},
@@ -143,11 +142,9 @@ TEST_CASE("convertToNextStep","[convertToNextStep]"){
 
     const auto step = StepDescription{
         .oldBlock = Block{
-            Direction::HORIZONTAL,
             BlockType::MAIN_BLOCK,
             X{0},
-            Y{2},
-            Size{2} 
+            Y{2}
         },
         X{4},
         Y{2}

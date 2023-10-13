@@ -23,8 +23,7 @@ namespace UnblockMe::Utils::Graph  {
         using UnblockMe::Utils::Block::BlockType;
         using UnblockMe::Utils::Block::Y;
         using UnblockMe::Utils::Block::X;
-        using UnblockMe::Utils::Block::Size;
-        return grid.count(Block{Direction::HORIZONTAL,BlockType::MAIN_BLOCK,X{4},Y{2},Size{2}})==1;
+        return grid.count(Block{BlockType::MAIN_BLOCK,X{4},Y{2}})==1;
     }
         
 
@@ -120,7 +119,6 @@ namespace UnblockMe::Utils::Graph  {
         using UnblockMe::Utils::Block::Block;
         using UnblockMe::Utils::Block::X;
         using UnblockMe::Utils::Block::Y;
-        using UnblockMe::Utils::Block::Size;
         using UnblockMe::Utils::Block::Direction;
         using UnblockMe::Utils::Block::BlockType;
         
@@ -160,11 +158,6 @@ namespace UnblockMe::Utils::Graph  {
              X{after.xHeadPos},
              Y{after.yHeadPos}
             };
-
-            
-
-
-
             
     }
 

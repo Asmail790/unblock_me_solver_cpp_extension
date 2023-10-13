@@ -9,23 +9,12 @@ namespace UnblockMe::Utils::Block {
     // use std::move for xHeadPos.value ?
      
     Block::Block(
-        Direction direction,
         BlockType type,
         X xHeadPos,
-        Y yHeadPos,
-        Size size
-     ) : 
-     direction{direction},
-     type{type},
-     xHeadPos{xHeadPos.value},
-     yHeadPos{yHeadPos.value},
-     size{size.value} {}
+        Y yHeadPos
+     ) : type{type}, xHeadPos{xHeadPos.value}, yHeadPos{yHeadPos.value} {}
 
     auto Block::operator==(const Block& otherBlock) const ->bool  {
-        if (this->direction != otherBlock.direction) {
-            return false;
-        }
-
         if (this->type != otherBlock.type) {
             return false;
         }
@@ -37,33 +26,25 @@ namespace UnblockMe::Utils::Block {
         if (this->yHeadPos != otherBlock.yHeadPos){
             return false;
         }
-
-        if (this->size != otherBlock.size) {
-            return false;
-        }
         return true;
     }
 
     Block::Block(const Block& other) : 
-    direction{other.direction},
     type{other.type},
     xHeadPos{other.xHeadPos},
-    yHeadPos{other.yHeadPos},
-    size{other.size} {};
+    yHeadPos{other.yHeadPos} {};
 
     
     Block::Block(Block&& other) noexcept : 
-    direction{other.direction},
     type{other.type},
     xHeadPos{other.xHeadPos},
-    yHeadPos{other.yHeadPos},
-    size{other.size} {};
+    yHeadPos{other.yHeadPos} {};
 
    
 
     auto  Block::operator<(const Block& otherBlock)const -> bool {
-       const auto t1 = std::tuple(this->direction,this->type, this->xHeadPos,this->yHeadPos,this->size);
-       const auto t2 = std::tuple(otherBlock.direction,otherBlock.type, otherBlock.xHeadPos,otherBlock.yHeadPos,otherBlock.size);
+       const auto t1 = std::tuple(this->type, this->xHeadPos,this->yHeadPos);
+       const auto t2 = std::tuple(otherBlock.type, otherBlock.xHeadPos,otherBlock.yHeadPos);
        return t1 < t2;
     }
 
@@ -72,7 +53,7 @@ namespace UnblockMe::Utils::Block {
     std::size_t hashOfBlock(const Block &block) {
         using std::size_t;
 
-        size_t hash = block.xHeadPos*10000 +block.yHeadPos*1000 +block.size*100 + static_cast<int>(block.type)*10 + static_cast<int>(block.direction); 
+        size_t hash = block.xHeadPos*1 +block.yHeadPos*10 + static_cast<int>(block.type)*100; 
         return hash;
     }
     bool equalsOfBlock(const Block& lhs, const Block& rhs){

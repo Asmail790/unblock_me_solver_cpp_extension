@@ -103,7 +103,6 @@ auto getAvailablePositionsForBlock(const Block& block, const std::array<std::arr
         using UnblockMe::Utils::Grid::getAvailablePositionsForBlock;
         using UnblockMe::Utils::Block::Y;
         using UnblockMe::Utils::Block::X;
-        using UnblockMe::Utils::Block::Size;
         using std::set;
 
 
@@ -118,11 +117,9 @@ auto getAvailablePositionsForBlock(const Block& block, const std::array<std::arr
               
                 
                 copyOfGrid.emplace(
-                    block.direction,
                     block.type,
                     X{pos.first},
-                    Y{pos.second},
-                    Size{block.size}
+                    Y{pos.second}
                 );
 
                 grids.insert(copyOfGrid);   

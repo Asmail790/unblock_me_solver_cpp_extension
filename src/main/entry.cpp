@@ -133,7 +133,6 @@ namespace UnblockMe::Utils::Entry {
         using UnblockMe::Utils::Block::Direction;
         using UnblockMe::Utils::Block::X;
         using UnblockMe::Utils::Block::Y;
-        using UnblockMe::Utils::Block::Size;
         using UnblockMe::Utils::Block::Block;
         Grid grid{};
         const auto id = mlClassIds_;
@@ -142,27 +141,27 @@ namespace UnblockMe::Utils::Entry {
             auto coordinate = convertToBlockCoordinate(box.topLeft(),gridProperties);
             
             if (box.class_ == id.fixedBlock){
-                grid.emplace(Direction::NONE,BlockType::FIXED_BLOCK,X{coordinate.first},Y{coordinate.second},Size{1});
+                grid.emplace(BlockType::FIXED_BLOCK,X{coordinate.first},Y{coordinate.second});
             }
 
             else if (box.class_ == id.mainBlock){
-                 grid.emplace(Direction::HORIZONTAL,BlockType::MAIN_BLOCK,X{coordinate.first},Y{coordinate.second},Size{2});
+                 grid.emplace(BlockType::MAIN_BLOCK,X{coordinate.first},Y{coordinate.second});
             }
 
             else if (box.class_ == id.horizontal2XBlock){
-                grid.emplace(Direction::HORIZONTAL,BlockType::MOVABLE_BLOCK_2XH,X{coordinate.first},Y{coordinate.second},Size{2});
+                grid.emplace(BlockType::MOVABLE_BLOCK_2XH,X{coordinate.first},Y{coordinate.second});
             }
 
             else if (box.class_ == id.horizontal3XBlock){
-                grid.emplace(Direction::HORIZONTAL,BlockType::MOVABLE_BLOCK_3XH,X{coordinate.first},Y{coordinate.second},Size{3});
+                grid.emplace(BlockType::MOVABLE_BLOCK_3XH,X{coordinate.first},Y{coordinate.second});
             }
             
             else if (box.class_ == id.vertical2XBlock){
-                grid.emplace(Direction::VERTICAL,BlockType::MOVABLE_BLOCK_2XV,X{coordinate.first},Y{coordinate.second},Size{2});
+                grid.emplace(BlockType::MOVABLE_BLOCK_2XV,X{coordinate.first},Y{coordinate.second});
             }
 
             else if (box.class_ == id.vertical3XBlock){
-                grid.emplace(Direction::VERTICAL,BlockType::MOVABLE_BLOCK_3XV,X{coordinate.first},Y{coordinate.second},Size{3});
+                grid.emplace(BlockType::MOVABLE_BLOCK_3XV,X{coordinate.first},Y{coordinate.second});
             }
         }
 

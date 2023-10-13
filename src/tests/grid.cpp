@@ -6,25 +6,21 @@
 
 
 using UnblockMe::Utils::Block::Block;
-using UnblockMe::Utils::Block::Direction;
 using UnblockMe::Utils::Block::BlockType;
 using UnblockMe::Utils::Block::X;
 using UnblockMe::Utils::Block::Y;
-using UnblockMe::Utils::Block::Size;
 using UnblockMe::Utils::Grid::Grid;
 using UnblockMe::Utils::Block::hashOfBlock;
 
 TEST_CASE("Grid Add duplicates","[Grid][Duplicates]") {
 
-    const Direction direction = Direction::HORIZONTAL;
     const BlockType blockType = BlockType::MAIN_BLOCK;
     const auto xHeadPos = X{1};
     const auto yHeadPos = Y{2}; 
-    const auto size = Size{3};
     
-    const auto block =  Block(direction,blockType,xHeadPos,yHeadPos,size);
-    const auto duplicateBlock =  Block(direction,blockType,xHeadPos,yHeadPos,size);
-    const auto nonDuplicateBlock = Block( Direction::NONE,BlockType::FIXED_BLOCK,X{0},Y{0},Size{0});
+    const auto block =  Block(blockType,xHeadPos,yHeadPos);
+    const auto duplicateBlock =  Block(blockType,xHeadPos,yHeadPos);
+    const auto nonDuplicateBlock = Block( BlockType::FIXED_BLOCK,X{0},Y{0});
 
 
     Grid grid{};
@@ -41,35 +37,27 @@ TEST_CASE("getOccupiedPositions", "[Occupied][Positions]") {
     Grid grid{
         {
             Block{
-                Direction::NONE,
                 BlockType::FIXED_BLOCK,
                 X{0},
-                Y{0},
-                Size{1}
+                Y{0}
             },
 
             Block{
-                Direction::NONE,
                 BlockType::FIXED_BLOCK,
                 X{5},
-                Y{0},
-                Size{1}
+                Y{0}
             },
 
             Block{
-                Direction::NONE,
                 BlockType::FIXED_BLOCK,
                 X{5},
-                Y{5},
-                Size{1}
+                Y{5}
             },
 
             Block{
-                Direction::NONE,
                 BlockType::FIXED_BLOCK,
                 X{0},
-                Y{5},
-                Size{1}
+                Y{5}
             },
         }
     };
@@ -105,11 +93,9 @@ TEST_CASE("getAvailablePositionsForBlock for Simple Case MOVABLE_BLOCK_2XH","[Av
     using Positions = std::set<Position>;
   
     const auto block = Block{
-            Direction::HORIZONTAL,
             BlockType::MOVABLE_BLOCK_2XH,
             X{2},
-            Y{2},
-            Size{2}
+            Y{2}
     };
 
     const auto grid = Grid{
@@ -144,11 +130,9 @@ TEST_CASE("getAvailablePositionsForBlock for Simple Case MAIN_BLOCK","[Available
     using Positions = std::set<Position>;
   
     const auto block = Block{
-            Direction::HORIZONTAL,
             BlockType::MAIN_BLOCK,
             X{2},
-            Y{2},
-            Size{2}
+            Y{2}
     };
 
     const auto grid = Grid{
@@ -185,11 +169,9 @@ TEST_CASE("getAvailablePositionsForBlock for Simple Case MOVABLE_BLOCK_3XH","[Av
     using Positions = std::set<Position>;
   
     const auto block = Block{
-            Direction::HORIZONTAL,
             BlockType::MOVABLE_BLOCK_3XH,
             X{2},
-            Y{2},
-            Size{3}
+            Y{2}
     };
 
     const auto grid = Grid{
@@ -225,11 +207,9 @@ TEST_CASE("getAvailablePositionsForBlock for Simple Case MOVABLE_BLOCK_2XV","[Av
     using Positions = std::set<Position>;
   
     const auto block = Block{
-            Direction::VERTICAL,
             BlockType::MOVABLE_BLOCK_2XV,
             X{2},
-            Y{2},
-            Size{2}
+            Y{2}
     };
 
     const auto grid = Grid{
@@ -265,11 +245,9 @@ TEST_CASE("getAvailablePositionsForBlock for Simple Case MOVABLE_BLOCK_3XV","[Av
     using Positions = std::set<Position>;
   
     const auto block = Block{
-            Direction::VERTICAL,
             BlockType::MOVABLE_BLOCK_3XV,
             X{2},
-            Y{2},
-            Size{3}
+            Y{2}
     };
 
     const auto grid = Grid{
@@ -304,11 +282,9 @@ TEST_CASE("getAvailablePositionsForBlock for Simple Case FIXED_BLOCK","[Availabl
     using Positions = std::set<Position>;
   
     const auto block = Block{
-            Direction::NONE,
             BlockType::FIXED_BLOCK,
             X{2},
-            Y{2},
-            Size{1}
+            Y{2}
     };
 
     const auto grid = Grid{
@@ -344,27 +320,21 @@ TEST_CASE("getAvailablePositionsForBlock for Advanced Case MOVABLE_BLOCK_2XH","[
     using Positions = std::set<Position>;
   
     const auto fixed1 = Block{
-        Direction::NONE,
         BlockType::FIXED_BLOCK,
         X{1},
-        Y{0},
-        Size{1}
+        Y{0}
     };
 
     const auto block = Block{
-        Direction::HORIZONTAL,
         BlockType::MOVABLE_BLOCK_2XH,
         X{2},
-        Y{0},
-        Size{2}
+        Y{0}
     };
 
     const auto fixed2 = Block{
-        Direction::NONE,
         BlockType::FIXED_BLOCK,
         X{4},
-        Y{0},
-        Size{1}
+        Y{0}
     };
 
 
@@ -401,27 +371,21 @@ TEST_CASE("getAvailablePositionsForBlock for Advanced Case MAIN_BLOCK","[Availab
     using Positions = std::set<Position>;
   
     const auto fixed1 = Block{
-        Direction::NONE,
         BlockType::FIXED_BLOCK,
         X{1},
-        Y{0},
-        Size{1}
+        Y{0}
     };
 
     const auto block = Block{
-        Direction::HORIZONTAL,
         BlockType::MAIN_BLOCK,
         X{2},
-        Y{0},
-        Size{2}
+        Y{0}
     };
 
     const auto fixed2 = Block{
-        Direction::NONE,
         BlockType::FIXED_BLOCK,
         X{4},
-        Y{0},
-        Size{1}
+        Y{0}
     };
 
 
@@ -460,27 +424,21 @@ TEST_CASE("getAvailablePositionsForBlock for Advanced Case MOVABLE_BLOCK_3XH","[
     using Positions = std::set<Position>;
   
     const auto fixed1 = Block{
-        Direction::NONE,
         BlockType::FIXED_BLOCK,
         X{1},
-        Y{0},
-        Size{1}
+        Y{0}
     };
 
     const auto block = Block{
-        Direction::HORIZONTAL,
         BlockType::MOVABLE_BLOCK_3XH,
         X{2},
-        Y{0},
-        Size{3}
+        Y{0}
     };
 
     const auto fixed2 = Block{
-        Direction::NONE,
         BlockType::FIXED_BLOCK,
         X{5},
-        Y{0},
-        Size{1}
+        Y{0}
     };
 
 
@@ -517,27 +475,21 @@ TEST_CASE("getAvailablePositionsForBlock for Advanced Case MOVABLE_BLOCK_2XV","[
     using Positions = std::set<Position>;
   
     const auto fixed1 = Block{
-        Direction::NONE,
         BlockType::FIXED_BLOCK,
         X{0},
-        Y{1},
-        Size{1}
+        Y{1}
     };
 
     const auto block = Block{
-        Direction::HORIZONTAL,
         BlockType::MOVABLE_BLOCK_2XV,
         X{0},
-        Y{2},
-        Size{2}
+        Y{2}
     };
 
     const auto fixed2 = Block{
-        Direction::NONE,
         BlockType::FIXED_BLOCK,
         X{0},
-        Y{4},
-        Size{1}
+        Y{4}
     };
 
 
@@ -574,27 +526,21 @@ TEST_CASE("getAvailablePositionsForBlock for Advanced Case MOVABLE_BLOCK_3XV","[
     using Positions = std::set<Position>;
   
     const auto fixed1 = Block{
-        Direction::NONE,
         BlockType::FIXED_BLOCK,
         X{0},
-        Y{1},
-        Size{1}
+        Y{1}
     };
 
     const auto block = Block{
-        Direction::HORIZONTAL,
         BlockType::MOVABLE_BLOCK_3XV,
         X{0},
-        Y{2},
-        Size{3}
+        Y{2}
     };
 
     const auto fixed2 = Block{
-        Direction::NONE,
         BlockType::FIXED_BLOCK,
         X{0},
-        Y{5},
-        Size{1}
+        Y{5}
     };
 
 
@@ -627,55 +573,44 @@ TEST_CASE("getAvailablePositionsForBlock for Advanced Case MOVABLE_BLOCK_3XV","[
 TEST_CASE("getAdjacentGrids simple case","[Get][Adjacent][Grids][1]") {
     using std::set;
     using UnblockMe::Utils::Grid::getAdjacentGrids;
-    const auto dirH = Direction::HORIZONTAL;
     const auto typeM2XH =  BlockType::MOVABLE_BLOCK_2XH;
     
     Grid grid{{
         Block{
-            dirH,
             typeM2XH,
             X{0},
-            Y{0},
-            Size{2}
+            Y{0}
         }
     }};
 
     const auto adjacentGrids = set<Grid>{{
        Grid{
             Block{
-                dirH,
                 typeM2XH,
                 X{1},
-                Y{0},
-                Size{2}
+                Y{0}
             }
         },
 
         Grid{
             Block{
-                dirH,
                 typeM2XH,
                 X{2},
-                Y{0},
-                Size{2}
+                Y{0}
             }
         },
         Grid{
             Block{
-                dirH,
                 typeM2XH,
                 X{3},
-                Y{0},
-                Size{2}
+                Y{0}
             }
         },
         Grid{
             Block{
-                dirH,
                 typeM2XH,
                 X{4},
-                Y{0},
-                Size{2}
+                Y{0}
             }
         }   
     }};
@@ -686,23 +621,18 @@ TEST_CASE("getAdjacentGrids simple case","[Get][Adjacent][Grids][1]") {
 TEST_CASE("getAdjacentGrids simple case 2","[Get][Adjacent][Grids][2]") {
     using std::set;
     using UnblockMe::Utils::Grid::getAdjacentGrids;
-    const auto dirH = Direction::HORIZONTAL;
     const auto typeM2XH =  BlockType::MOVABLE_BLOCK_2XH;
     
     Grid grid{{
         Block{
-            dirH,
             typeM2XH,
             X{0},
-            Y{0},
-            Size{2}
+            Y{0}
         },
         Block{
-            dirH,
             typeM2XH,
             X{4},
-            Y{0},
-            Size{2}
+            Y{0}
         }
 
     }};
@@ -710,67 +640,51 @@ TEST_CASE("getAdjacentGrids simple case 2","[Get][Adjacent][Grids][2]") {
     const auto adjacentGrids = set<Grid>{{
        Grid{
             Block{
-                dirH,
                 typeM2XH,
                 X{1},
-                Y{0},
-                Size{2}
+                Y{0}
             },
             Block{
-                dirH,
                 typeM2XH,
                 X{4},
-                Y{0},
-                Size{2}
+                Y{0}
             }
         },
 
         Grid{
             Block{
-                dirH,
                 typeM2XH,
                 X{2},
-                Y{0},
-                Size{2}
+                Y{0}
             },
             Block{
-                dirH,
                 typeM2XH,
                 X{4},
-                Y{0},
-                Size{2}
+                Y{0}
             }
         },
         Grid{
             Block{
-                dirH,
                 typeM2XH,
                 X{0},
-                Y{0},
-                Size{2}
+                Y{0}
             },
             Block{
-                dirH,
                 typeM2XH,
                 X{2},
-                Y{0},
-                Size{2}
+                Y{0}
             }
         },
         Grid{
             Block{
-                dirH,
                 typeM2XH,
                 X{0},
-                Y{0},
-                Size{2}
+                Y{0}
             },
             Block{
-                dirH,
                 typeM2XH,
                 X{3},
-                Y{0},
-                Size{2}
+                Y{0}
             }
         }   
     }};
@@ -780,25 +694,19 @@ TEST_CASE("getAdjacentGrids simple case 2","[Get][Adjacent][Grids][2]") {
 TEST_CASE("getAdjacentGrids simple case 3","[Get][Adjacent][Grids][3]") {
     using std::set;
     using UnblockMe::Utils::Grid::getAdjacentGrids;
-    const auto dirH = Direction::HORIZONTAL;
-    const auto dirV = Direction::VERTICAL;
     const auto typeM2XH =  BlockType::MOVABLE_BLOCK_2XH;
     const auto typeM2XV =  BlockType::MOVABLE_BLOCK_2XV;
     
     Grid grid{
         Block{
-            dirH,
             typeM2XH,
             X{1},
-            Y{0},
-            Size{2}
+            Y{0}
         },
         Block{
-            dirV,
             typeM2XV,
             X{0},
-            Y{1},
-            Size{2}
+            Y{1}
         }
     };
 
@@ -807,130 +715,98 @@ TEST_CASE("getAdjacentGrids simple case 3","[Get][Adjacent][Grids][3]") {
     const auto adjacentGrids = set<Grid>{{
         Grid{
             Block{
-                dirH,
                 typeM2XH,
                 X{0},
-                Y{0},
-                Size{2}
+                Y{0}
             },
             Block{
-                dirV,
                 typeM2XV,
                 X{0},
-                Y{1},
-                Size{2}
+                Y{1}
             }
         },
         Grid{
             Block{
-                dirH,
                 typeM2XH,
                 X{2},
-                Y{0},
-                Size{2}
+                Y{0}
             },
             Block{
-                dirV,
                 typeM2XV,
                 X{0},
-                Y{1},
-                Size{2}
+                Y{1}
             }
         },
         Grid{
             Block{
-                dirH,
                 typeM2XH,
                 X{3},
-                Y{0},
-                Size{2}
+                Y{0}
             },
             Block{
-                dirV,
                 typeM2XV,
                 X{0},
-                Y{1},
-                Size{2}
+                Y{1}
             }
         },
         Grid{
             Block{
-                dirH,
                 typeM2XH,
                 X{4},
-                Y{0},
-                Size{2}
+                Y{0}
             },
             Block{
-                dirV,
                 typeM2XV,
                 X{0},
-                Y{1},
-                Size{2}
+                Y{1}
             }
         },
     Grid{
         Block{
-            dirH,
             typeM2XH,
             X{1},
-            Y{0},
-            Size{2}
+            Y{0}
         },
         Block{
-            dirV,
             typeM2XV,
             X{0},
-            Y{0},
-            Size{2}
+            Y{0}
         }
     },
     Grid{
         Block{
-            dirH,
             typeM2XH,
             X{1},
-            Y{0},
-            Size{2}
+            Y{0}
         },
         Block{
-            dirV,
             typeM2XV,
             X{0},
-            Y{2},
-            Size{2}
+            Y{2}
         }
     },
     Grid{
         Block{
-            dirH,
             typeM2XH,
             X{1},
-            Y{0},
-            Size{2}
+            Y{0}
         },
         Block{
-            dirV,
             typeM2XV,
             X{0},
-            Y{3},
-            Size{2}
+            Y{3}
         }
     },
     Grid{
         Block{
-            dirH,
             typeM2XH,
             X{1},
-            Y{0},
-            Size{2}
+            Y{0}
         },
         Block{
-            dirV,
             typeM2XV,
             X{0},
-            Y{4},
-            Size{2}
+            Y{4}
         }
     }
       
@@ -944,25 +820,19 @@ TEST_CASE("getAdjacentGrids simple case 3","[Get][Adjacent][Grids][3]") {
 TEST_CASE("getAdjacentGrids simple case 4","[Get][Adjacent][Grids][4]") {
     using std::set;
     using UnblockMe::Utils::Grid::getAdjacentGrids;
-    const auto dirH = Direction::HORIZONTAL;
-    const auto dirV = Direction::VERTICAL;
     const auto typeM2XH =  BlockType::MOVABLE_BLOCK_2XH;
     const auto typeM2XV =  BlockType::MOVABLE_BLOCK_2XV;
     
     Grid grid{
         Block{
-            dirH,
             typeM2XH,
             X{0},
-            Y{0},
-            Size{2}
+            Y{0}
         },
         Block{
-            dirV,
             typeM2XV,
             X{0},
-            Y{1},
-            Size{2}
+            Y{1}
         }
     };
 
@@ -971,130 +841,98 @@ TEST_CASE("getAdjacentGrids simple case 4","[Get][Adjacent][Grids][4]") {
     const auto adjacentGrids = set<Grid>{{
         Grid{
             Block{
-                dirH,
                 typeM2XH,
                 X{1},
-                Y{0},
-                Size{2}
+                Y{0}
             },
             Block{
-                dirV,
                 typeM2XV,
                 X{0},
-                Y{1},
-                Size{2}
+                Y{1}
             }
         },
         Grid{
             Block{
-                dirH,
                 typeM2XH,
                 X{2},
-                Y{0},
-                Size{2}
+                Y{0}
             },
             Block{
-                dirV,
                 typeM2XV,
                 X{0},
-                Y{1},
-                Size{2}
+                Y{1}
             }
         },
         Grid{
             Block{
-                dirH,
                 typeM2XH,
                 X{3},
-                Y{0},
-                Size{2}
+                Y{0}
             },
             Block{
-                dirV,
                 typeM2XV,
                 X{0},
-                Y{1},
-                Size{2}
+                Y{1}
             }
         },
         Grid{
             Block{
-                dirH,
                 typeM2XH,
                 X{4},
-                Y{0},
-                Size{2}
+                Y{0}
             },
             Block{
-                dirV,
                 typeM2XV,
                 X{0},
-                Y{1},
-                Size{2}
+                Y{1}
             }
         },
     Grid{
         Block{
-            dirH,
             typeM2XH,
             X{0},
-            Y{0},
-            Size{2}
+            Y{0}
         },
         Block{
-            dirV,
             typeM2XV,
             X{0},
-            Y{2},
-            Size{2}
+            Y{2}
         }
     },
     Grid{
         Block{
-            dirH,
             typeM2XH,
             X{0},
-            Y{0},
-            Size{2}
+            Y{0}
         },
         Block{
-            dirV,
             typeM2XV,
             X{0},
-            Y{3},
-            Size{2}
+            Y{3}
         }
     },
     Grid{
         Block{
-            dirH,
             typeM2XH,
             X{0},
-            Y{0},
-            Size{2}
+            Y{0}
         },
         Block{
-            dirV,
             typeM2XV,
             X{0},
-            Y{4},
-            Size{2}
+            Y{4}
         }
     },
     Grid{
         Block{
-            dirH,
             typeM2XH,
             X{0},
-            Y{0},
-            Size{2}
+            Y{0}
         },
         Block{
-            dirV,
             typeM2XV,
             X{0},
-            Y{4},
-            Size{2}
+            Y{4}
         }
     }
     }};

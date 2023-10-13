@@ -8,11 +8,11 @@
 #include <stdexcept>
 namespace UnblockMe::Utils::Block {
 
-    enum class Direction {
-        VERTICAL,
-        HORIZONTAL,
-        NONE,
+
+    enum class Direction{
+        NONE,HORIZONTAL,VERTICAL
     };
+
 
     enum class BlockType {
         MAIN_BLOCK,
@@ -31,18 +31,12 @@ namespace UnblockMe::Utils::Block {
         const unsigned char value;
     };
 
-    struct Size {
-        const unsigned char value;
-    };
-
     class Block{
         public:
             Block( 
-                Direction direction,
                 BlockType type,
                 X xHeadPos,
-                Y yHeadPos,
-                Size size
+                Y yHeadPos
             );
 
         Block(const Block& other);
@@ -53,11 +47,9 @@ namespace UnblockMe::Utils::Block {
 
             
         public:
-            const Direction direction;
             const BlockType type;
             const unsigned char xHeadPos;
             const unsigned char yHeadPos;
-            const unsigned char size;
             auto operator==(const Block& otherBlock)const ->bool;
             auto operator<(const Block& otherBlock)const ->bool;
     };

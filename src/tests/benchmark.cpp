@@ -18,7 +18,6 @@
 using UnblockMe::Utils::Block::Block;
 using UnblockMe::Utils::Block::BlockType;
 using UnblockMe::Utils::Block::Direction;
-using UnblockMe::Utils::Block::Size;
 using UnblockMe::Utils::Block::X;
 using UnblockMe::Utils::Block::Y;
 using UnblockMe::Utils::Graph::Graph;
@@ -30,39 +29,31 @@ using UnblockMe::Utils::Graph::isTerminalNode;
 auto SolveSimplePuzzle() {
      Block b1 =    
         Block{
-        Direction::HORIZONTAL,
         BlockType::MAIN_BLOCK,
         X{0},
-        Y{2},
-        Size{2}
+        Y{2}
     };
 
 
     Block b2 =    
         Block{
-        Direction::VERTICAL,
         BlockType::MOVABLE_BLOCK_3XV,
         X{2},
-        Y{0},
-        Size{3}
+        Y{0}
     };
 
     Block b3 =    
         Block{
-        Direction::HORIZONTAL,
         BlockType::MOVABLE_BLOCK_3XH,
         X{2},
-        Y{3},
-        Size{3}
+        Y{3}
     };
 
     Block b4 =    
         Block{
-        Direction::VERTICAL,
         BlockType::MOVABLE_BLOCK_2XV,
         X{5},
-        Y{3},
-        Size{2}
+        Y{3}
     };
 
     const auto start = Node{b1,b2,b3,b4};
@@ -168,86 +159,66 @@ auto SolveAdvancedPuzzle() {
     
     //Taken from Expert>Original>Puzzle 1
      Block b1 = Block{
-        Direction::VERTICAL,
         BlockType::MOVABLE_BLOCK_3XV,
         X{0},
-        Y{0},
-        Size{3}
+        Y{0}
     };
 
 
     Block b2 = Block{
-        Direction::HORIZONTAL,
         BlockType::MOVABLE_BLOCK_2XH,
         X{0},
-        Y{3},
-        Size{2}
+        Y{3}
     };
 
     Block b3 = Block{
-        Direction::HORIZONTAL,
         BlockType::MOVABLE_BLOCK_2XH,
         X{2},
-        Y{3},
-        Size{2}
+        Y{3}
     };
 
     Block b4 = Block{
-        Direction::VERTICAL,
         BlockType::MOVABLE_BLOCK_2XV,
         X{2},
-        Y{0},
-        Size{2}
+        Y{0}
     };
 
     Block b5 = Block{
-        Direction::VERTICAL,
         BlockType::MOVABLE_BLOCK_2XV,
         X{3},
-        Y{1},
-        Size{2}
+        Y{1}
     };
 
     Block b6 = Block{
-        Direction::HORIZONTAL,
         BlockType::MOVABLE_BLOCK_3XH,
         X{3},
-        Y{0},
-        Size{3}
+        Y{0}
     };
 
 
     Block b7 = Block{
-        Direction::VERTICAL,
         BlockType::MOVABLE_BLOCK_3XV,
         X{5},
-        Y{2},
-        Size{3}
+        Y{2}
     };
 
     Block b8 = Block{
-        Direction::HORIZONTAL,
         BlockType::MOVABLE_BLOCK_2XH,
         X{0},
-        Y{4},
-        Size{2}
+        Y{4}
     };
 
     Block b9 =  Block{
-        Direction::HORIZONTAL,
         BlockType::MOVABLE_BLOCK_2XH,
         X{2},
-        Y{4},
-        Size{2}
+        Y{4}
     };
 
     Block main =    
         Block{
-        Direction::HORIZONTAL,
         BlockType::MAIN_BLOCK,
         X{1},
-        Y{2},
-        Size{2}
+        Y{2}
     };
 
     const auto start = Node{b1,b2,b3,b4,b5,b6,b7,b8,b9,main};
